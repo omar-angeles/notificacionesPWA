@@ -1,0 +1,86 @@
+@import url(roboto.css);
+@import url(material-symbols-outlined.css);
+@import url(icon.css);
+@import url(filled.css);
+@import url(outline.css);
+@import url(segmented.css);
+@import url(list.css);
+@import url(cards.css);
+@import url(navTab.css);
+@import url(navBar.css);
+@import url(navDrw.css);
+
+html {
+ --TitleLargeFont: var(--Font);
+ --TitleLargeSize: 22px;
+ --TitleLargeWeight: 400;
+ --TitleMediumFont: var(--Font);
+ --TitleMediumSize: 16px;
+ --TitleMediumWeight: 500;
+ --TitleSmallFont: var(--Font);
+ --TitleSmallSize: 14px;
+ --TitleSmallWeight: 500;
+ --LabelLargeFont: var(--Font);
+ --LabelLargeSize: 14px;
+ --LabelLargeWeight: 500;
+ --LabelMediumFont: var(--Font);
+ --LabelMediumSize: 12px;
+ --LabelMediumWeight: 500;
+ --BodyLargeFont: var(--Font);
+ --BodyLargeSize: 16px;
+ --BodyLargeWeight: 400;
+ --BodySmallFont: var(--Font);
+ --BodySmallSize: 12px;
+ --BodySmallWeight: 400;
+ --ShapeCornerMedium: 12px;
+ --ShapeCornerExtraSmall: 4px;
+}
+
+body {
+ margin: 0;
+ display: none;
+}
+
+body.fouc {
+ display: block;
+ opacity: 0;
+ animation-name: fouc;
+ animation-fill-mode: forwards;
+ animation-duration: 1s;
+}
+
+@keyframes fouc {
+ from {
+  opacity: 0
+ }
+
+ to {
+  opacity: 1
+ }
+}
+
+p {
+ margin: 1rem;
+}
+
+@keyframes ripple {
+ from {
+  background-size: 100%;
+ }
+
+ to {
+  background-size: 15000%;
+ }
+}
+
+@keyframes rippleMenu {
+ from {
+  color: var(--OnSurfaceVariant);
+  background-size: 100%;
+ }
+
+ to {
+  color: var(--OnPrimary);
+  background-size: 15000%;
+ }
+}

@@ -1,0 +1,88 @@
+.navTab {
+ display: flex;
+ padding-bottom: 16px;
+ gap: 16px;
+ justify-content: center;
+}
+
+.navTab a {
+ position: relative;
+ text-decoration: none;
+ color: var(--Primary);
+ font-family:
+  var(--LabelLargeFont);
+ font-size:
+  var(--LabelLargeSize);
+ font-weight:
+  var(--LabelLargeWeight);
+ box-sizing: border-box;
+ height: 40px;
+ line-height: 40px;
+ padding: 0 24px;
+ border-radius: 20px;
+ overflow: hidden;
+}
+
+.navTab a:hover {
+ background-color:
+  var(--PrimaryHover);
+ box-shadow:
+  var(--ElevationLevel1Shadow);
+}
+
+.navTab a:focus {
+ outline: none;
+ background-color:
+  var(--PrimaryFocus);
+}
+
+.navTab a:active {
+ background-color:
+  var(--PrimaryPressed);
+ background-image: radial-gradient(circle, transparent 1%, var(--PrimaryHover) 1%);
+ background-position: center;
+ background-size: 100%;
+ animation-fill-mode: forwards;
+ animation-name: ripple;
+ animation-duration: 0.5s;
+}
+
+.navTab a.selected::after {
+ content: "";
+ background-color:
+  var(--Primary);
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+.navTab a.selected {
+ background-color: transparent;
+ box-shadow:
+  var(--ElevationLevel0Shadow);
+ color: var(--OnPrimary);
+}
+
+.navTab a.selected:hover {
+ background-color:
+  var(--OnPrimaryHover);
+ box-shadow:
+  var(--ElevationLevel1Shadow);
+}
+
+.navTab a.selected:focus {
+ background-color:
+  var(--OnPrimaryFocus);
+}
+
+.navTab a.selected:active {
+ background-color:
+  var(--OnPrimaryPressed);
+}
+
+.navTab span {
+ vertical-align: middle;
+}

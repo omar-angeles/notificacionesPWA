@@ -1,0 +1,119 @@
+.segmented {
+ display: flex;
+ align-items: stretch;
+ box-sizing: border-box;
+}
+
+.segmented input {
+ display: none;
+}
+
+.segmented label {
+ position: relative;
+ box-sizing: border-box;
+ border:
+  1px solid var(--Outline);
+ border-left: none;
+ color: var(--OnSurface);
+ font-family:
+  var(--LabelLargeFont);
+ font-size:
+  var(--LabelLargeSize);
+ font-weight:
+  var(--LabelLargeWeight);
+ flex: 1;
+ display: inline-block;
+ height: 40px;
+ line-height: 40px;
+ text-align: center;
+ padding: 0 12px;
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.segmented label:first-of-type {
+ border-top-left-radius: 20px;
+ border-bottom-left-radius: 20px;
+ border-left:
+  1px solid var(--Outline);
+}
+
+.segmented label:last-of-type {
+ border-top-right-radius: 20px;
+ border-bottom-right-radius:
+  20px;
+}
+
+.segmented label:hover {
+ background-color:
+  var(--OnSurfaceHover);
+}
+
+.segmented :focus+label {
+ background-color:
+  var(--OnSurfaceFocus);
+}
+
+.segmented :active+label {
+ background-color:
+  var(--OnSurfacePressed);
+ background-image: radial-gradient(circle, transparent 1%, var(--OnSurfaceHover) 1%);
+ background-position: center;
+ background-size: 100%;
+ animation-fill-mode: forwards;
+ animation-name: ripple;
+ animation-duration: 0.5s;
+}
+
+.segmented :checked+label {
+ color:
+  var(--OnSecondaryContainer);
+}
+
+.segmented :checked+label:after {
+ content: "";
+ background-color:
+  var(--SecondaryContainer);
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+.segmented :checked+label:hover {
+ background-color:
+  var(--OnSecondaryContainerHover);
+}
+
+.segmented :checked:focus+label {
+ background-color:
+  var(--OnSecondaryContainerFocus);
+}
+
+.segmented :checked:active+label {
+ background-color:
+  var(--OnSecondaryContainerPressed);
+ background-image: radial-gradient(circle, transparent 1%, var(--OnSecondaryContainerHover) 1%);
+ background-position: center;
+ background-size: 100%;
+ animation-fill-mode: forwards;
+ animation-name: ripple;
+ animation-duration: 0.5s;
+}
+
+.segmented span:first-child {
+ vertical-align: middle;
+ visibility: hidden;
+ font-size: 18px;
+ margin-right: 8px;
+}
+
+.segmented :checked+label span:first-child {
+ visibility: visible;
+ color:
+  var(--OnSecondaryContainer);
+}

@@ -1,0 +1,189 @@
+.list {
+ margin: 8px 0;
+ padding: 0;
+ list-style-type: none;
+}
+
+.list a:focus {
+ background-color:
+  var(--OnSurfaceFocus);
+ outline: none;
+}
+
+.list a:active {
+ background-color:
+  var(--OnSurfacePressed);
+}
+
+.list .one-line {
+ display: block;
+ background-color:
+  var(--Surface);
+ color: var(--OnSurface);
+ padding: 16px;
+ font-family:
+  var(--TitleMediumFont);
+ font-size:
+  var(--TitleMediumSize);
+ font-weight:
+  var(--TitleMediumWeight);
+ line-height: 16px;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.list .one-line:hover {
+ background-color:
+  var(--OnSurfaceHover);
+}
+
+.list .one-line.avatar,
+.list .one-line.square {
+ padding: 8px 16px;
+}
+
+.list .one-line.rectangle {
+ padding: 8px 16px 8px 0;
+}
+
+.list img,
+.list span {
+ vertical-align: middle;
+}
+
+.list .icon .material-symbols-outlined:first-child {
+ margin-right: 32px;
+}
+
+.list .icon img {
+ width: 24px;
+ height: 24px;
+ margin-right: 32px;
+}
+
+.list .avatar .material-symbols-outlined:first-child {
+ font-size: 40px;
+ border-radius: 50%;
+ margin-right: 16px;
+}
+
+.list .avatar img {
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ margin-right: 16px;
+}
+
+.list .square .material-symbols-outlined:first-child {
+ font-size: 56px;
+ margin-right: 16px;
+}
+
+.list .square img {
+ width: 56px;
+ height: 56px;
+ margin-right: 16px;
+}
+
+.list .rectangle img {
+ width: 100px;
+ height: 56px;
+ margin-right: 16px;
+}
+
+.list .two-line {
+ display: block;
+ background-color:
+  var(--Surface);
+ color: var(--OnSurface);
+ padding: 16px;
+ font-family:
+  var(--TitleMediumFont);
+ font-size:
+  var(--TitleMediumSize);
+ font-weight:
+  var(--TitleMediumWeight);
+}
+
+.list .two-line:hover {
+ background-color:
+  var(--OnSurfaceHover);
+}
+
+.list a.two-line {
+ text-decoration: none;
+}
+
+.list .two-line .title {
+ grid-area: title;
+ font-family:
+  var(--TitleMediumFont);
+ font-size:
+  var(--TitleMediumSize);
+ font-weight:
+  var(--TitleMediumWeight);
+ line-height: 16px;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.list a.two-line .title {
+ text-decoration: underline;
+}
+
+.list .two-line .secondary {
+ grid-area: secondary;
+ display: block;
+ font-family:
+  var(--BodySmallFont);
+ font-size:
+  var(--BodySmallSize);
+ font-weight:
+  var(--BodySmallWeight);
+ line-height: 20px;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.list .two-line img .list .two-line .material-symbols-outlined:first-child {
+ grid-area: img;
+}
+
+.list .two-line.icon,
+.list .two-line.avatar,
+.list .two-line.square,
+.list .two-line.rectangle {
+ box-sizing: border-box;
+ display: grid;
+ grid-template-columns: 56px 1fr;
+ grid-template-rows: 16px 1fr;
+ grid-template-areas:
+  "img title"
+  "img secondary";
+}
+
+.list .two-line.rectangle {
+ padding: 8px 16px 8px 0;
+ grid-template-columns: 116px 1fr;
+ grid-template-rows: 24px 1fr;
+}
+
+.list .two-line.rectangle .title {
+ padding-top: 8px;
+}
+
+.list .two-line.rectangle .secondary {
+ padding-bottom: 12px;
+}
+
+.list .two-line.square .material-symbols-outlined:first-child {
+ font-size: 40px;
+}
+
+.list .two-line.square img {
+ width: 40px;
+ height: 40px;
+}

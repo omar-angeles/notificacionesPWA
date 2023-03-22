@@ -1,0 +1,59 @@
+.filled::after {
+ content: "";
+ background-color:
+  var(--Primary);
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+.filled {
+ position: relative;
+ background-color: transparent;
+ box-shadow:
+  var(--ElevationLevel0Shadow);
+ color: var(--OnPrimary);
+ font-family:
+  var(--LabelLargeFont);
+ font-size:
+  var(--LabelLargeSize);
+ font-weight:
+  var(--LabelLargeWeight);
+ box-sizing: border-box;
+ width: 100%;
+ height: 40px;
+ padding: 0 24px;
+ border: none;
+ border-radius: 20px;
+ overflow: hidden;
+}
+
+.filled:hover {
+ background-color:
+  var(--OnPrimaryHover);
+ box-shadow:
+  var(--ElevationLevel1Shadow);
+}
+
+.filled:focus {
+ outline: none;
+ background-color:
+  var(--OnPrimaryFocus);
+}
+
+.filled:active {
+ background-color:
+  var(--OnPrimaryPressed);
+}
+
+.filled:disabled {
+ color: var(--DisabledContent);
+}
+
+.filled:disabled:after {
+ background-color:
+  var(--DisabledContainer);
+}

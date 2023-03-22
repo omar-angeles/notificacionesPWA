@@ -1,0 +1,94 @@
+.cards {
+ margin: 8px;
+ gap: 8px;
+ display: grid;
+ grid-template-columns:
+  repeat(auto-fill,
+   minmax(15rem, 1fr));
+}
+
+.cards>*::after {
+ content: "";
+ background-color:
+  var(--SurfaceVariant);
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+.cards>* {
+ position: relative;
+ display: block;
+ text-decoration: none;
+ color: var(--OnSurfaceVariant);
+ border-radius: 12px;
+ overflow: hidden;
+ box-shadow:
+  var(--ElevationLevel0Shadow);
+}
+
+.cards>*:hover {
+ background-color:
+  var(--OnSurfaceHover);
+ box-shadow:
+  var(--ElevationLevel1Shadow);
+}
+
+.cards>*:focus {
+ background-color:
+  var(--OnSurfaceFocus);
+}
+
+.cards a:active {
+ background-color:
+  var(--OnSurfacePressed);
+ background-image: radial-gradient(circle, transparent 1%, var(--SurfaceVariant) 1%);
+ background-position: center;
+ background-size: 100%;
+ animation-fill-mode: forwards;
+ animation-name: ripple;
+ animation-duration: 0.5s;
+}
+
+.cards>*>* {
+ display: block;
+}
+
+.cards figure {
+ border-radius: 12px;
+ padding: 0;
+ margin: 0;
+ width: 100%;
+}
+
+.cards figure * {
+ border-radius: 12px;
+ width: 100%;
+}
+
+.cards .headline {
+ margin: 1rem;
+ font-family:
+  var(--HeadlineSmallFont);
+ font-size:
+  var(--HeadlineSmallSize);
+ font-weight:
+  var(--HeadlineSmallWeight);
+}
+
+.cards a .headline {
+ text-decoration: underline;
+}
+
+.cards .supporting {
+ margin: 1rem;
+ font-family:
+  var(--BodyLargeFont);
+ font-size:
+  var(--BodyLargeSize);
+ font-weight:
+  var(--BodyLargeWeight);
+}

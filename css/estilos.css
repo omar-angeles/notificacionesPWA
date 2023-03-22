@@ -1,0 +1,70 @@
+html {
+ --Font: -apple-system,
+  BlinkMacSystemFont, Roboto,
+  sans-serif;
+ --Background: #FFFBFE;
+ --OnBackground: #1C1B1F;
+ --Surface: #FFFBFE;
+ --OnSurface: #1C1B1F;
+ --OnSurfaceHover: #1C1B1F14;
+ --OnSurfaceFocus: #1C1B1F19;
+ --OnSurfacePressed: #1C1B1F1E;
+ --OnSurfaceShadow: #1C1B1F99;
+ --SurfaceVariant: #E7E0EC;
+ --SurfaceVariantHover:
+  #CAC4D0;
+ --OnSurfaceVariant: #49454F;
+ --OnSurfaceVariantHover:
+  #49454F14;
+ --OnSurfaceVariantFocus:
+  #49454F19;
+ --OnSurfaceVariantPressed:
+  #49454F1E;
+ --Primary: #6750A4;
+ --PrimaryHover: #6750A414;
+ --PrimaryFocus: #6750A419;
+ --PrimaryPressed: #6750A41E;
+ --OnPrimary: #FFFFFF;
+ --OnPrimaryHover: #FFFFFF14;
+ --OnPrimaryFocus: #FFFFFF19;
+ --OnPrimaryPressed: #FFFFFF1E;
+ --Outline: #79747E;
+ --SecondaryContainer: #E8DEF8;
+ --OnSecondaryContainer:
+  #1D192B;
+ --OnSecondaryContainerHover:
+  #1D192B14;
+ --OnSecondaryContainerFocus:
+  #1D192B19;
+ --OnSecondaryContainerPressed:
+  #1D192B1E;
+ --Shadow: #000000;
+ --Error: #B3261E;
+ --OnErrorContainer: #F2B8B5;
+ --Elevation: #F5EEFA;
+ --DisabledContent: #1C1B1F60;
+ --DisabledContainer:
+  #1C1B1F1E;
+ --ElevationLevel0: none;
+ --ElevationLevel0Shadow: none;
+ --ElevationLevel1Shadow:
+  0 1px 1px 1px var(--Shadow);
+ --ElevationLevel2:
+  0 3px 6px 0px var(--OnSurfaceShadow);
+ font-size: 16px;
+ font-family: var(--Font);
+ color: var(--OnBackground);
+ background-color:
+  var(--Background);
+}
+
+body {
+ scroll-padding-top: 8rem;
+}
+
+form>section,
+body>section {
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
+}

@@ -1,0 +1,13 @@
+<?php
+function bdCrea(\PDO $con)
+{
+ $con->exec(
+  'CREATE TABLE
+   IF NOT EXISTS SUSCRIPCION (
+    SUS_ENDPOINT TEXT PRIMARY KEY,
+    SUS_PUB_KEY TEXT NOT NULL,
+    SUS_AUT_TOK TEXT NOT NULL,
+    SUS_CONT_ENCOD TEXT NOT NULL
+   )'
+ );
+}

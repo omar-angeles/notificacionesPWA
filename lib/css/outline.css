@@ -1,0 +1,41 @@
+.outline {
+ border:
+  1px solid var(--Outline);
+ background-color: transparent;
+ box-shadow:
+  var(--ElevationLevel0);
+ color: var(--Primary);
+ font-family:
+  var(--LabelLargeFont);
+ font-size:
+  var(--LabelLargeSize);
+ font-weight:
+  var(--LabelLargeWeight);
+ box-sizing: border-box;
+ height: 40px;
+ padding: 0 24px;
+ border-radius: 20px;
+ overflow: hidden;
+}
+
+.outline:hover {
+ background-color:
+  var(--PrimaryHover);
+}
+
+.outline:focus {
+ outline: none;
+ background-color:
+  var(--PrimaryFocus);
+}
+
+.outline:active {
+ background-color:
+  var(--PrimaryPressed);
+}
+
+.outline:disabled {
+ color: var(--DisabledContent);
+ border:
+  1px solid var(--DisabledContainer);
+}

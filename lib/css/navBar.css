@@ -1,0 +1,109 @@
+.navBar {
+ display: flex;
+ position: fixed;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color:
+  var(--Elevation)
+}
+
+.navBar a {
+ display: block;
+ flex: 1;
+ color: var(--OnSurfaceVariant);
+ line-height: 16px;
+ font-family:
+  var(--LabelMediumFont);
+ font-size:
+  var(--LabelMediumSize);
+ font-weight:
+  var(--LabelMediumWeight);
+ text-decoration: none;
+ padding-top: 12px;
+ padding-bottom: 16px;
+ padding-left: 4px;
+ padding-right: 4px;
+ text-align: center;
+}
+
+.navBar a.selected {
+ color: var(--OnSurface);
+}
+
+.navBar a:hover {
+ background-color:
+  var(--OnSurfaceVariantHover);
+}
+
+.navBar a.selected:hover {
+ background-color:
+  var(--OnSurfaceHover);
+}
+
+.navBar a:focus {
+ outline: none;
+ background-color:
+  var(--OnSurfaceVariantFocus);
+}
+
+.navBar a.selected:focus {
+ background-color:
+  var(--OnSurfaceFocus);
+}
+
+.navBar a:active {
+ background-color:
+  var(--OnSurfaceVariantPressed);
+}
+
+.navBar a.selected:active {
+ background-color:
+  var(--OnSurfacePressed);
+}
+
+.navBar span {
+ color: var(--OnSurfaceVariant);
+ position: relative;
+ display: block;
+ height: 32px;
+ width: 64px;
+ line-height: 32px;
+ margin-bottom: 4px;
+ box-sizing: border-box;
+ margin-left: auto;
+ margin-right: auto;
+ overflow: hidden;
+}
+
+.navBar a.selected span {
+ color:
+  var(--OnSecondaryContainer);
+}
+
+.navBar a.selected:not(:focus, :active) {
+ font-variation-settings:
+  'FILL'1, 'wght'700, 'GRAD'0,
+  'opsz'48;
+}
+
+.navBar span::after {
+ content: "";
+ background-color:
+  var(--SecondaryContainer);
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ left: 0;
+ height: 32px;
+ width: 64px;
+ border-radius: 16px;
+ box-sizing: border-box;
+ transform: scaleX(0);
+ transition: transform 0.5s;
+}
+
+.navBar a.selected span::after,
+.navBar a:active span::after {
+ transform: scaleX(1);
+}

@@ -1,0 +1,36 @@
+button.icon {
+ padding: 4px;
+ border: none;
+ background-color: transparent;
+}
+
+button.icon:focus {
+ outline: none;
+}
+
+button.icon span {
+ border-radius: 50%;
+ padding: 8px;
+ color: var(--OnSurface);
+}
+
+button.icon:hover span {
+ background-color:
+  var(--OnSurfaceHover);
+}
+
+button.icon:focus span {
+ background-color:
+  var(--OnSurfaceFocus);
+}
+
+button.icon:active span {
+ background-color:
+  var(--OnSurfacePressed);
+}
+
+button.icon:disabled span {
+ color: var(--DisabledContent) !important;
+ background-color:
+  var(--DisabledContainer);
+}
