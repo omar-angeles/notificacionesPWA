@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+   content="width=device-width">
+ <title>
+  Recomiendo - PWA con Material
+  Design
+ </title>
+ <meta name="theme-color"
+   content="#fffbfe">
+ <link rel="icon" sizes="32x32"
+   href="favicon.ico">
+ <link rel="manifest"
+   href="site.webmanifest">
+ <meta
+   name="apple-mobile-web-app-title"
+   content="pwamd">
+ <meta
+   name="apple-mobile-web-app-capable"
+   content="yes">
+ <meta
+   name="apple-mobile-web-app-status-bar-style"
+   content="default">
+ <link rel="apple-touch-icon"
+   href="img/maskable_icon.png">
+ <link rel="apple-touch-icon"
+   sizes="48x48"
+   href="img/maskable_icon_x48.png">
+ <link rel="apple-touch-icon"
+   sizes="72x72"
+   href="img/maskable_icon_x72.png">
+ <link rel="apple-touch-icon"
+   sizes="96x96"
+   href="img/maskable_icon_x96.png">
+ <link rel="apple-touch-icon"
+   sizes="128x128"
+   href="img/maskable_icon_x128.png">
+ <link rel="apple-touch-icon"
+   sizes="192x192"
+   href="img/maskable_icon_x192.png">
+ <link rel="apple-touch-icon"
+   sizes="384x384"
+   href="img/maskable_icon_x384.png">
+ <link rel="apple-touch-icon"
+   sizes="512x512"
+   href="img/maskable_icon_x512.png">
+ <script type="module"
+   src="js/config.js"></script>
+ <link rel="stylesheet"
+   href="css/estilos.css">
+ <link rel="stylesheet"
+   href="lib/css/md3.css">
+</head>
+
+<!-- <body>
+ <form id="form" novalidate>
+  <center-aligned-top-app-bar>
+   <h1 slot="headline">
+    Recomiendo
+   </h1>
+   <mi-nav
+     slot="adicional"></mi-nav>
+  </center-aligned-top-app-bar>
+  <section>
+   <select-menu id="inGenero"
+     required>
+    <span slot="label">
+     *Género
+    </span>
+    <small id="msgGenero"
+      slot="supporting">
+     * Obligatorio
+    </small>
+    <menu-option
+      value=""></menu-option>
+    <menu-option value="pop">
+     Pop
+    </menu-option>
+    <menu-option value="reg">
+     Reguetón
+    </menu-option>
+   </select-menu>
+   <p>
+    <button class="filled">
+     Recomendar
+    </button>
+   </p>
+  </section>
+ </form>
+ <script type="module">
+  import {
+   muestraError
+  } from "./lib/js2/muestraError.js"
+  import {
+   msg
+  } from "./lib/js2/msg.js"
+  import {
+   recomienda
+  } from "./js/recomienda.js"
+
+  const OBLIGATORIO =
+   "* Obligatorio"
+
+  form.addEventListener(
+   "submit", procesa)
+  inGenero.addEventListener(
+   "input", copiaMensajes)
+
+  function copiaMensajes() {
+   msg(inGenero, msgGenero,
+    OBLIGATORIO)
+  }
+
+  /**
+   * @param {SubmitEvent} evt
+   */
+  function procesa(evt) {
+   evt.preventDefault()
+   try {
+    copiaMensajes()
+    if (inGenero.validity.valid) {
+     const genero = inGenero.value
+     const resultado =
+      recomienda(genero)
+     alert(resultado)
+    }
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+ </script>
+</body> -->
+
+<body>
+ <h1>Web Push</h1>
+ <button id="btnSuscribe">
+  Suscríbete
+ </button>
+ <button id="btnCancela">
+  Cancela suscripción
+ </button>
+ <button id="btnNotifica">
+  Notifica
+ </button>
+ 
+ <p>
+  <output id="outEstado">
+   <progress max="100">
+    Cargando&hellip;
+   </progress>
+  </output>
+ </p>
+ <script type="module">
+  import {
+   detecta
+  } from "./lib/js/detecta.js"
+  import {
+   getSuscripcion
+  } from "./lib/js/getSuscripcion.js"
+  import {
+   getSuscripcionDto
+  } from "./lib/js/getSuscripcionDto.js"
+  import {
+   ejecuta
+  } from "../lib/js/ejecuta.js"
+  import {
+   enviaJson
+  } from "../lib/js/enviaJson.js"
+  import {
+   Method
+  } from "./lib/js/Method.js"
+  import {
+   muestraError
+  } from "./lib/js/muestraError.js"
+  import {
+   urlBase64ToUint8Array
+  } from "./lib/js/urlBase64ToUint8Array.js"
+
+  const applicationServerKey =
+   urlBase64ToUint8Array(
+    "BNIJ9atmfAi9C9hJgfZA7lD3FxMca0voBnHhcygmVP6pVoOpjtH-04m-H2OLNM8daKTTViLx3BD93UScmp1tv3M")
+    
+
+  /** @enum {string} */
+  const Estado = {
+   CALCULANDO: "Calculando…",
+   SUSCRITO: "Suscrito",
+   DESUSCRITO: "Sin suscripción",
+   INCOMPATIBLE: "Incompatible"
+  }
+
+  configura()
+
+  export
+   async function configura() {
+   try {
+    cambiaEstado(
+     Estado.INCOMPATIBLE)
+
+    btnSuscribe.addEventListener(
+     "click", suscribe)
+    btnCancela.addEventListener(
+     "click", cancela)
+    btnNotifica.addEventListener(
+     "click", notifica)
+
+    await detecta("sw.js")
+    await actualiza()
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  export
+   async function notifica() {
+   try {
+    await ejecuta(fetch(
+     "srv/SrvNotifica.php"))
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  /**
+  * @param {PushSubscription
+  *        } suscripcion
+  * @param {Method} method
+  */
+  export async function
+   srvSuscripcionProyx(suscripcion,
+    method) {
+   const dto =
+    getSuscripcionDto(suscripcion)
+   await enviaJson(dto, method,
+    "srv/SrvSuscripcion.php")
+  }
+
+  async function actualiza() {
+   const suscripcion =
+    await getSuscripcion()
+   if (suscripcion === null) {
+    cambiaEstado(Estado.DESUSCRITO)
+   } else {
+    await srvSuscripcionProyx(
+     suscripcion, Method.PUT)
+    cambiaEstado(Estado.SUSCRITO)
+   }
+  }
+
+  async function suscribe() {
+   try {
+    cambiaEstado(Estado.CALCULANDO)
+    const registro =
+     await navigator.serviceWorker.
+      ready
+    const suscripcion =
+     await registro.pushManager.
+      subscribe({
+       userVisibleOnly: true,
+       applicationServerKey
+      })
+    await srvSuscripcionProyx(
+     suscripcion, Method.POST)
+    cambiaEstado(Estado.SUSCRITO)
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  async function cancela() {
+   try {
+    cambiaEstado(Estado.CALCULANDO)
+    const suscripcion =
+     await getSuscripcion()
+    if (suscripcion !== null
+     && await suscripcion.
+      unsubscribe()) {
+     await srvSuscripcionProyx(
+      suscripcion, Method.DELETE)
+     cambiaEstado(
+      Estado.DESUSCRITO)
+    }
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+
+  /** @param {Estado} estado */
+  function cambiaEstado(estado) {
+   if (outEstado !== null
+    && btnSuscribe !== null
+    && btnNotifica !== null
+    && btnCancela !== null) {
+    outEstado.value = estado
+    if (estado
+     === Estado.INCOMPATIBLE ||
+     estado
+     === Estado.CALCULANDO) {
+     btnSuscribe.hidden = true
+     btnCancela.hidden = true
+     btnNotifica.hidden = true
+    } else if (estado
+     === Estado.SUSCRITO) {
+     btnSuscribe.hidden = true
+     btnCancela.hidden = false
+     btnNotifica.hidden = false
+    } else if (estado
+     === Estado.DESUSCRITO) {
+     btnSuscribe.hidden = false
+     btnCancela.hidden = true
+     btnNotifica.hidden = true
+    }
+   }
+  }
+ </script>
+</body>
+  
+  
+</html>

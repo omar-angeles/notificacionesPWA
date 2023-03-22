@@ -1,0 +1,13 @@
+{
+ "compilerOptions": {
+  "checkJs": true,
+  "strictNullChecks": true,
+  "module": "ES6",
+  "moduleResolution": "classic",
+  "lib": [
+   "ES2015",
+   "WebWorker",
+   "DOM"
+  ]
+ }
+}
